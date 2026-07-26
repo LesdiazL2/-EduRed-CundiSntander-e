@@ -1,0 +1,113 @@
+HTML
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduRed Santander - Repositorio Digital</title>
+    <!-- Tailwind CSS para el diseño visual -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Encabezado / Navegación -->
+    <header class="bg-green-700 text-white shadow-md">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold">EDURED SANTANDER</h1>
+                <p class="text-green-100 text-sm">Repositorio Digital de Recursos Educativos</p>
+            </div>
+            <nav class="space-x-4">
+                <a href="#" class="hover:underline">Inicio</a>
+                <a href="#" class="hover:underline">Favoritos</a>
+                <a href="#" class="hover:underline">Estadísticas</a>
+                <a href="#" class="bg-white text-green-700 px-4 py-2 rounded-lg font-semibold hover:bg-green-50">Mi Perfil</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Buscador Principal -->
+    <section class="bg-green-600 py-10 text-white text-center px-4">
+        <h2 class="text-2xl font-bold mb-4">Encuentra y comparte recursos educativos abiertos</h2>
+        <div class="max-w-xl mx-auto flex gap-2">
+            <input type="text" placeholder="Buscar recursos (ej. Matemáticas 5°, Guía DUA...)" class="w-full px-4 py-3 rounded-lg text-gray-800 focus:outline-none">
+            <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-6 py-3 rounded-lg">Buscar</button>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="container mx-auto px-4 py-8">
+        <h3 class="text-xl font-bold mb-4 text-gray-700">Categorías de Recursos</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 text-center">
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-gray-200">📚 <br><span class="font-semibold">Planeaciones</span></div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-gray-200">📄 <br><span class="font-semibold">Guías</span></div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-gray-200">🎥 <br><span class="font-semibold">Videos</span></div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-gray-200">📝 <br><span class="font-semibold">Evaluaciones</span></div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-gray-200">🎮 <br><span class="font-semibold">Juegos</span></div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-gray-200">🧩 <br><span class="font-semibold">Inclusión</span></div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-gray-200">🤖 <br><span class="font-semibold">IA Educativa</span></div>
+        </div>
+    </section>
+
+    <!-- Recursos Destacados -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold text-gray-700">Recursos Destacados</h3>
+            <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg font-medium">👩‍🏫 Compartir Recurso</button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Tarjeta 1 -->
+            <div class="bg-white p-5 rounded-lg shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Matemáticas</span>
+                    <h4 class="font-bold text-lg mt-2">Planeación Matemáticas 5°</h4>
+                    <p class="text-sm text-gray-600 mt-1">Autor: I.E. San José</p>
+                    <p class="text-yellow-500 font-bold mt-2">⭐⭐⭐⭐⭐ (4.9)</p>
+                </div>
+                <button class="mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded font-medium">📥 Descargar</button>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="bg-white p-5 rounded-lg shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Ciencias</span>
+                    <h4 class="font-bold text-lg mt-2">Laboratorio Virtual Ciencias</h4>
+                    <p class="text-sm text-gray-600 mt-1">Autor: Col. Santander</p>
+                    <p class="text-yellow-500 font-bold mt-2">⭐⭐⭐⭐⭐ (5.0)</p>
+                </div>
+                <button class="mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded font-medium">📥 Descargar</button>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="bg-white p-5 rounded-lg shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Lenguaje</span>
+                    <h4 class="font-bold text-lg mt-2">Juego Interactivo Lenguaje</h4>
+                    <p class="text-sm text-gray-600 mt-1">Autor: Escuela Rural La Esperanza</p>
+                    <p class="text-yellow-500 font-bold mt-2">⭐⭐⭐⭐☆ (4.7)</p>
+                </div>
+                <button class="mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded font-medium">📥 Descargar</button>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="bg-white p-5 rounded-lg shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded">Inclusión</span>
+                    <h4 class="font-bold text-lg mt-2">Guía DUA Educación Inclusiva</h4>
+                    <p class="text-sm text-gray-600 mt-1">Autor: Centro Inclusivo Bucaramanga</p>
+                    <p class="text-yellow-500 font-bold mt-2">⭐⭐⭐⭐⭐ (5.0)</p>
+                </div>
+                <button class="mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded font-medium">📥 Descargar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="bg-gray-800 text-white py-6 mt-12 text-center text-sm">
+        <p>Red Colaborativa de Recursos Educativos - Cundinamarca y Santander</p>
+        <p class="text-gray-400 mt-1">© EduRed - Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
