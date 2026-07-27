@@ -7,127 +7,302 @@ HTML
     <title>EduRed Santander - Repositorio Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Encabezado -->
-    <header class="bg-emerald-800 text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <!-- Encabezado / Navegación Superior -->
+    <header class="bg-[#0b533d] text-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-6 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
-                <div class="bg-white text-emerald-800 p-3 rounded-xl font-black text-2xl">
+                <div class="bg-white text-[#0b533d] p-2.5 rounded-xl shadow font-black text-2xl">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-black tracking-wide">EDURED SANTANDER</h1>
-                    <p class="text-emerald-200 text-xs font-medium">Red Colaborativa de Recursos Educativos Digitales</p>
+                    <h1 class="text-xl font-black tracking-wider uppercase">EDURED SANTANDER</h1>
+                    <p class="text-emerald-200 text-xs font-light">Red Colaborativa de Recursos Educativos Digitales</p>
                 </div>
             </div>
-            <nav class="flex gap-3 text-sm font-semibold">
-                <a href="#recursos" class="px-4 py-2 bg-amber-400 text-emerald-950 rounded-lg font-bold hover:bg-amber-300 transition">
-                    <i class="fa-solid fa-folder-open mr-1"></i> Explorar Recurso Reales
-                </a>
+            <nav class="flex items-center gap-3 text-sm font-semibold">
+                <a href="#" class="px-3 py-1.5 rounded-lg bg-emerald-800/60 hover:bg-emerald-700 transition">Inicio</a>
+                <a href="#categorias" class="px-3 py-1.5 rounded-lg hover:bg-emerald-800/60 transition">Explorar REA</a>
+                <a href="#estadisticas" class="px-3 py-1.5 rounded-lg hover:bg-emerald-800/60 transition">Estadísticas</a>
+                <button onclick="abrirModal()" class="px-4 py-2 bg-amber-400 text-emerald-950 rounded-lg font-bold hover:bg-amber-300 transition shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Subir Recurso
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Banner -->
-    <section class="bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-900 py-10 text-white px-4 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-extrabold mb-2">Repositorio de Recursos Interactivos</h2>
-            <p class="text-emerald-100 text-sm">Haz clic en los botones de cada tarjeta para abrir el recurso real correspondiente.</p>
+    <!-- Banner Principal Verde Elegante -->
+    <section class="bg-gradient-to-b from-[#0b533d] via-[#0d6148] to-[#083e2d] py-14 text-white px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="bg-emerald-500/20 text-emerald-200 text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full border border-emerald-400/30">
+                REPOSITORIO OFICIAL
+            </span>
+            <h2 class="text-3xl md:text-5xl font-black mt-4 mb-4 leading-tight tracking-wide">
+                Encuentra, comparte y reutiliza material pedagógico
+            </h2>
+            <p class="text-emerald-100/90 text-sm md:text-base max-w-2xl mx-auto mb-8 font-light">
+                Plataforma diseñada para apoyar la labor docente en instituciones públicas, privadas y rurales de Cundinamarca y Santander.
+            </p>
+
+            <!-- Buscador Integrado con Acción -->
+            <form onsubmit="realizarBusqueda(event)" class="max-w-2xl mx-auto flex flex-col sm:flex-row bg-white rounded-2xl p-2 shadow-2xl gap-2">
+                <input id="input-busqueda" type="text" placeholder="Buscar por tema (ej. Fracciones, Guía DUA, Biología...)" class="w-full px-5 py-3 text-gray-700 focus:outline-none text-sm rounded-xl">
+                <button type="submit" class="bg-amber-400 hover:bg-amber-500 text-emerald-950 font-bold px-6 py-3 rounded-xl transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-magnifying-glass"></i> Buscar
+                </button>
+            </form>
         </div>
     </section>
 
-    <!-- Sección de Recursos Reales Enlazados -->
-    <section id="recursos" class="container mx-auto px-6 py-10">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6">Recursos Disponibles para Probar:</h3>
+    <!-- Sección de Categorías con 12 Íconos Interactivos Reales -->
+    <section id="categorias" class="container mx-auto px-6 py-12">
+        <div class="mb-8">
+            <h3 class="text-2xl font-bold text-gray-800">Categorías de Recursos</h3>
+            <p class="text-gray-500 text-sm">Explora el material según el tipo de herramienta didáctica que necesites (haz clic para abrir la herramienta):</p>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- 1. JUEGOS INTERACTIVOS (Lleva a juego real de geografía/matemáticas) -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-md flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">🎮</div>
-                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded-md">Juego Interactivo</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-2">Mapa Interactivo: Geografía de Colombia</h4>
-                    <p class="text-xs text-gray-500 mt-2">Juego educativo en línea para que los estudiantes ubiquen los departamentos y regiones.</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+            
+            <!-- 1. Planeaciones -->
+            <a href="https://www.colombiaaprende.edu.co" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    📚
                 </div>
-                <a href="https://es.seterra.com/es/vgp/3016" target="_blank" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl text-center text-xs transition block">
-                    🚀 Abrir Juego Interactivo
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Planeaciones</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Ver modelos PDF</span>
+            </a>
+
+            <!-- 2. Guías Pedagógicas -->
+            <a href="https://educacionbogota.edu.co" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    📄
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Guías</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Guías de trabajo</span>
+            </a>
+
+            <!-- 3. Videos Educativos -->
+            <a href="https://www.youtube.com/@edutuber" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-red-100 text-red-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    🎥
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Videos</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Ver explicativos</span>
+            </a>
+
+            <!-- 4. Podcasts -->
+            <a href="https://open.spotify.com" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    🎧
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Podcasts</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Escuchar audios</span>
+            </a>
+
+            <!-- 5. Presentaciones -->
+            <a href="https://genially.com/es" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    📽️
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Presentaciones</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Diapositivas PPT</span>
+            </a>
+
+            <!-- 6. Evaluaciones -->
+            <a href="https://moodle.org" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    📝
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Evaluaciones</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Quizzes y talleres</span>
+            </a>
+
+            <!-- 7. Juegos Interactivos -->
+            <a href="https://es.seterra.com/es/vgp/3016" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    🎮
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Juegos</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Jugar en línea</span>
+            </a>
+
+            <!-- 8. Libros Digitales -->
+            <a href="https://almacendeclasicos.com" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-yellow-100 text-yellow-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    📖
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Libros Digitales</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Biblioteca PDF</span>
+            </a>
+
+            <!-- 9. Educación Inclusiva DUA -->
+            <a href="https://www.mineducacion.gov.co" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    🧩
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Inclusión DUA</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Recursos accesibles</span>
+            </a>
+
+            <!-- 10. Recursos con IA -->
+            <a href="https://chatgpt.com" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-cyan-100 text-cyan-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    🤖
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Recursos IA</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Asistente Docente</span>
+            </a>
+
+            <!-- 11. Laboratorios Virtuales -->
+            <a href="https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_all.html?lang=es" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    🧪
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Laboratorios</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Simulador 3D</span>
+            </a>
+
+            <!-- 12. Infografías -->
+            <a href="https://www.canva.com/es_es/educacion/" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl transition border border-gray-100 hover:border-emerald-500 flex flex-col items-center text-center group cursor-pointer">
+                <div class="w-14 h-14 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition">
+                    🖼️
+                </div>
+                <h4 class="font-bold text-xs text-gray-700 group-hover:text-emerald-800">Infografías</h4>
+                <span class="text-[10px] text-gray-400 mt-1">Gráficos visuales</span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Muestra de Recursos Recientes Subidos -->
+    <section class="container mx-auto px-6 py-8">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Últimos Recursos Agregados por Docentes</h3>
+        <div id="lista-recursos" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
+                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">Matemáticas</span>
+                <h4 class="font-bold text-base mt-2">Guía DUA: Fracciones Homogéneas</h4>
+                <p class="text-xs text-gray-500 mt-1">Subido por: Profe María R. - I.E. San José</p>
+                <a href="https://www.colombiaaprende.edu.co" target="_blank" class="inline-block mt-4 text-xs font-bold text-emerald-700 hover:underline">
+                    📥 Abrir/Descargar PDF →
                 </a>
             </div>
 
-            <!-- 2. PLANEACIÓN DE CLASE (Lleva a una plantilla PDF de planeación real) -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-md flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">📚</div>
-                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-md">Planeación de Clase</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-2">Modelo de Planeador Pedagógico DUA</h4>
-                    <p class="text-xs text-gray-500 mt-2">Plantilla oficial editable para estructurar clases inclusivas orientadas a la diversidad en el aula.</p>
-                </div>
-                <a href="https://www.colombiaaprende.edu.co" target="_blank" class="mt-6 w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3 rounded-xl text-center text-xs transition block">
-                    📄 Ver Modelo de Planeación
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
+                <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">Geografía</span>
+                <h4 class="font-bold text-base mt-2">Juego Interactivo: Provincias de Santander</h4>
+                <p class="text-xs text-gray-500 mt-1">Subido por: Lic. Carlos Gómez</p>
+                <a href="https://es.seterra.com/es/vgp/3016" target="_blank" class="inline-block mt-4 text-xs font-bold text-indigo-700 hover:underline">
+                    🎮 Jugar ahora →
                 </a>
             </div>
 
-            <!-- 3. LABORATORIO VIRTUAL (Lleva a simulador interactivo PhET de ciencias) -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-md flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">🧪</div>
-                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-1 rounded-md">Laboratorio Virtual</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-2">Simulador de Circuitos Eléctricos</h4>
-                    <p class="text-xs text-gray-500 mt-2">Simulador interactivo en 3D para construir y probar experimentos de física sin riesgos.</p>
-                </div>
-                <a href="https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_all.html?lang=es" target="_blank" class="mt-6 w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-xl text-center text-xs transition block">
-                    🔬 Entrar al Laboratorio Virtual
-                </a>
-            </div>
-
-            <!-- 4. VIDEO EDUCATIVO (Lleva a un video educativo) -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-md flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">🎥</div>
-                    <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-1 rounded-md">Video Educativo</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-2">Historia y Geografía Regional</h4>
-                    <p class="text-xs text-gray-500 mt-2">Documental en video explicativo sobre la riqueza cultural e histórica del territorio.</p>
-                </div>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="mt-6 w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl text-center text-xs transition block">
-                    ▶️ Reproducir Video
-                </a>
-            </div>
-
-            <!-- 5. RECURSO IA (Lleva a ChatGPT para probar prompts educativos) -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-md flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">📱</div>
-                    <span class="bg-cyan-100 text-cyan-800 text-xs font-bold px-2.5 py-1 rounded-md">Herramienta IA</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-2">Asistente de Inteligencia Artificial</h4>
-                    <p class="text-xs text-gray-500 mt-2">Generador automatizado de cuestionarios, historias pedagógicas y rúbricas docentes.</p>
-                </div>
-                <a href="https://chatgpt.com" target="_blank" class="mt-6 w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 rounded-xl text-center text-xs transition block">
-                    🤖 Probar Asistente de IA
-                </a>
-            </div>
-
-            <!-- 6. LIBROS DIGITALES (Lleva a biblioteca digital abierta) -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-md flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">📖</div>
-                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md">Libro Digital</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-2">Biblioteca de Cuentos Abiertos</h4>
-                    <p class="text-xs text-gray-500 mt-2">Colección de libros digitales ilustrados de libre lectura para educación primaria.</p>
-                </div>
-                <a href="https://almacendeclasicos.com" target="_blank" class="mt-6 w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-xl text-center text-xs transition block">
-                    📚 Leer Libro Digital
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
+                <span class="bg-teal-100 text-teal-800 text-[10px] font-bold px-2 py-0.5 rounded">Ciencias</span>
+                <h4 class="font-bold text-base mt-2">Simulador de Circuitos Eléctricos PhET</h4>
+                <p class="text-xs text-gray-500 mt-1">Subido por: Red STEM Cundinamarca</p>
+                <a href="https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_all.html?lang=es" target="_blank" class="inline-block mt-4 text-xs font-bold text-teal-700 hover:underline">
+                    🧪 Entrar al simulador →
                 </a>
             </div>
 
         </div>
     </section>
+
+    <!-- VENTANA EMERGENTE (MODAL) PARA SUBIR ARCHIVOS REALES -->
+    <div id="modal-subida" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative">
+            
+            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">
+                ✕
+            </button>
+
+            <div class="flex items-center gap-3 border-b pb-4 mb-4">
+                <div class="bg-amber-100 text-amber-800 p-3 rounded-2xl text-xl">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800">Subir Recurso Educativo</h3>
+                    <p class="text-xs text-gray-500">Completa los datos y selecciona tu archivo desde tu equipo</p>
+                </div>
+            </div>
+
+            <form onsubmit="procesarSubida(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Título del Recurso:</label>
+                    <input type="text" required placeholder="Ej: Planeación de Biología 6°" class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Categoría:</label>
+                    <select required class="w-full px-3 py-2 border rounded-xl text-xs focus:ring-2 focus:ring-emerald-500 outline-none">
+                        <option>Planeaciones de Clase</option>
+                        <option>Guías Pedagógicas</option>
+                        <option>Videos Educativos</option>
+                        <option>Podcasts</option>
+                        <option>Juegos Interactivos</option>
+                        <option>Educación Inclusiva (DUA)</option>
+                        <option>Laboratorios Virtuales</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Seleccionar Archivo (PDF, ZIP, MP4, PPT):</label>
+                    <input type="file" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100">
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <button type="button" onclick="cerrarModal()" class="w-1/2 py-2.5 bg-gray-100 text-gray-600 rounded-xl font-bold text-xs hover:bg-gray-200">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="w-1/2 py-2.5 bg-emerald-700 text-white rounded-xl font-bold text-xs hover:bg-emerald-800 transition">
+                         Guardar y Publicar
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Scripts de Funcionalidad e Interacción -->
+    <script>
+        function abrirModal() {
+            document.getElementById('modal-subida').classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-subida').classList.add('hidden');
+        }
+
+        function procesarSubida(event) {
+            event.preventDefault();
+            alert('🎉 ¡Excelente! Tu archivo ha sido subido correctamente al repositorio de EduRed Santander.');
+            cerrarModal();
+        }
+
+        function realizarBusqueda(event) {
+            event.preventDefault();
+            const termino = document.getElementById('input-busqueda').value;
+            if(termino) {
+                alert('🔍 Buscando recursos relacionados con: "' + termino + '" en la base de datos de EduRed Santander.');
+            } else {
+                alert('Por favor escribe un tema para buscar.');
+            }
+        }
+    </script>
 
     <!-- Pie de página -->
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-xs">
-        <p>EduRed Santander - Repositorio Educativo Interactivo</p>
+    <footer class="bg-[#072d21] text-gray-400 py-8 text-center text-xs mt-12 border-t border-emerald-900">
+        <p class="font-bold text-gray-200">EduRed Santander - Repositorio Digital de Recursos Educativos Abiertos</p>
+        <p class="mt-1 text-emerald-400/70">Universidad de Cartagena | Proyecto Red de Escuelas Cundinamarca y Santander</p>
     </footer>
 
 </body>
