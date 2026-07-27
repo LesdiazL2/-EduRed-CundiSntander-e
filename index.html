@@ -5,14 +5,14 @@ HTML
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduRed Santander - Repositorio Digital</title>
-    <!-- Tailwind CSS y FontAwesome para íconos visuales modernos -->
+    <!-- Tailwind CSS y FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
     <!-- Encabezado / Navegación -->
-    <header class="bg-emerald-800 text-white shadow-lg">
+    <header class="bg-emerald-800 text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <div class="bg-white text-emerald-800 p-3 rounded-xl shadow-inner font-black text-2xl">
@@ -25,200 +25,119 @@ HTML
             </div>
             <nav class="flex flex-wrap gap-3 text-sm font-semibold">
                 <a href="#" class="px-3 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 transition">Inicio</a>
-                <a href="#" class="px-3 py-2 rounded-lg hover:bg-emerald-700 transition">Explorar REA</a>
-                <a href="#" class="px-3 py-2 rounded-lg hover:bg-emerald-700 transition">Estadísticas</a>
-                <a href="#" class="px-4 py-2 bg-amber-400 text-emerald-950 rounded-lg font-bold hover:bg-amber-300 transition shadow"><i class="fa-solid fa-cloud-arrow-up mr-1"></i> Subir Recurso</a>
+                <a href="#categorias" class="px-3 py-2 rounded-lg hover:bg-emerald-700 transition">Categorías</a>
+                <a href="#recursos" class="px-3 py-2 rounded-lg hover:bg-emerald-700 transition">Recursos</a>
+                <button onclick="alert('Función de subida: Selecciona el archivo en formato PDF, ZIP o MP4 e ingresa los metadatos LOM/DUA.')" class="px-4 py-2 bg-amber-400 text-emerald-950 rounded-lg font-bold hover:bg-amber-300 transition shadow">
+                    <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Subir Recurso
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Banner Principal con Buscador -->
-    <section class="bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-900 py-12 text-white px-4 text-center relative overflow-hidden">
-        <div class="max-w-3xl mx-auto relative z-10">
+    <!-- Banner Principal -->
+    <section class="bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-900 py-12 text-white px-4 text-center">
+        <div class="max-w-3xl mx-auto">
             <span class="bg-emerald-500/30 text-emerald-200 text-xs uppercase font-bold tracking-widest px-3 py-1 rounded-full border border-emerald-400/30">Repositorio Oficial</span>
             <h2 class="text-3xl md:text-4xl font-extrabold mt-3 mb-3">Encuentra, comparte y reutiliza material pedagógico</h2>
-            <p class="text-emerald-100 text-sm mb-6 max-w-xl mx-auto">Plataforma diseñada para apoyar la labor docente en instituciones públicas, privadas y rurales de Cundinamarca y Santander.</p>
-            
-            <div class="bg-white p-2 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
-                <input type="text" placeholder="Buscar por tema (ej. Fracciones, Guía DUA, Biología...)" class="w-full px-4 py-3 rounded-xl text-gray-800 focus:outline-none text-sm">
-                <button class="bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold px-6 py-3 rounded-xl text-sm transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-magnifying-glass"></i> Buscar
-                </button>
-            </div>
+            <p class="text-emerald-100 text-sm mb-6 max-w-xl mx-auto">Haz clic en cualquier categoría para filtrar y explorar los materiales disponibles.</p>
         </div>
     </section>
 
-    <!-- Sección de Categorías Completas (12 Categorías) -->
-    <section class="container mx-auto px-6 py-10">
-        <div class="flex justify-between items-end mb-6">
-            <div>
-                <h3 class="text-2xl font-bold text-gray-800">Categorías de Recursos</h3>
-                <p class="text-gray-500 text-sm">Explora el material según el tipo de herramienta didáctica que necesites</p>
-            </div>
+    <!-- Sección de Categorías Interactivas -->
+    <section id="categorias" class="container mx-auto px-6 py-10">
+        <div class="mb-6">
+            <h3 class="text-2xl font-bold text-gray-800">Categorías de Recursos</h3>
+            <p class="text-gray-500 text-sm">Selecciona una categoría para ver los contenidos guardados:</p>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <!-- 1. Planeaciones -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    📚
-                </div>
-                <h4 class="font-bold text-xs text-gray-700">Planeaciones de Clase</h4>
-            </div>
+            <!-- Botones interactivos con JavaScript -->
+            <button onclick="filtrar('Planeaciones de Clase', '📄 Planeación de Aula: Matemáticas 5° (Fracciones)\n📄 Secuencia Didáctica: Lengua Castellana (Comprensión Lectora)')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📚</div>
+                <h4 class="font-bold text-xs text-gray-700">Planeaciones</h4>
+            </button>
 
-            <!-- 2. Guías -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    📄
-                </div>
-                <h4 class="font-bold text-xs text-gray-700">Guías Pedagógicas</h4>
-            </div>
+            <button onclick="filtrar('Guías Pedagógicas', '📑 Guía 1: Experimentos de Ciencias Naturales\n📑 Guía DUA: Geometría Interactiva para 3°')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📄</div>
+                <h4 class="font-bold text-xs text-gray-700">Guías</h4>
+            </button>
 
-            <!-- 3. Videos -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-red-100 text-red-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    🎥
-                </div>
-                <h4 class="font-bold text-xs text-gray-700">Videos Educativos</h4>
-            </div>
+            <button onclick="filtrar('Videos Educativos', '🎥 Video: Explicación del Sistema Solar (HD)\n🎥 Video Tutorial: Historia de Santander en 10 min')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">🎥</div>
+                <h4 class="font-bold text-xs text-gray-700">Videos</h4>
+            </button>
 
-            <!-- 4. Podcasts -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    🎧
-                </div>
+            <button onclick="filtrar('Podcasts', '🎧 Podcast: La Ciencia al Día (Episodio 4)\n🎧 Audionovela: Mitos y Leyendas de Colombia')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">🎧</div>
                 <h4 class="font-bold text-xs text-gray-700">Podcasts</h4>
-            </div>
+            </button>
 
-            <!-- 5. Presentaciones -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    📽️
-                </div>
+            <button onclick="filtrar('Presentaciones', '📽️ Diapositivas: Célula Animal y Vegetal (PPTX)\n📽️ Diapositivas: Independencia de Colombia')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📽️</div>
                 <h4 class="font-bold text-xs text-gray-700">Presentaciones</h4>
-            </div>
+            </button>
 
-            <!-- 6. Evaluaciones -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-orange-100 text-orange-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    📝
-                </div>
+            <button onclick="filtrar('Evaluaciones', '📝 Quiz Diagnóstico: Operaciones Básicas\n📝 Evaluación Formativa: Ortografía y Gramática')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📝</div>
                 <h4 class="font-bold text-xs text-gray-700">Evaluaciones</h4>
-            </div>
+            </button>
 
-            <!-- 7. Juegos -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    🎮
-                </div>
-                <h4 class="font-bold text-xs text-gray-700">Juegos Interactivos</h4>
-            </div>
+            <button onclick="filtrar('Juegos Interactivos', '🎮 Trivia Interactiva: Geografía de Santander\n🎮 Sopa de Letras Digital: Tabla Periódica')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">🎮</div>
+                <h4 class="font-bold text-xs text-gray-700">Juegos</h4>
+            </button>
 
-            <!-- 8. Libros Digitales -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    📖
-                </div>
+            <button onclick="filtrar('Libros Digitales', '📖 Libro PDF: Antología de Cuentos Escolares\n📖 Cartilla Ilustrada: Educación Ambiental')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📖</div>
                 <h4 class="font-bold text-xs text-gray-700">Libros Digitales</h4>
-            </div>
+            </button>
 
-            <!-- 9. Inclusión / DUA -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-pink-100 text-pink-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    🧩
-                </div>
-                <h4 class="font-bold text-xs text-gray-700">Educación Inclusiva</h4>
-            </div>
+            <button onclick="filtrar('Educación Inclusiva (DUA)', '🧩 Macrotipo: Guía de Lectura en Letra Grande\n🧩 Material Audiovisual con Lengua de Señas Colombiana (LSC)')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">🧩</div>
+                <h4 class="font-bold text-xs text-gray-700">Inclusión DUA</h4>
+            </button>
 
-            <!-- 10. IA Educativa -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-cyan-100 text-cyan-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    📱
-                </div>
-                <h4 class="font-bold text-xs text-gray-700">Recursos con IA</h4>
-            </div>
+            <button onclick="filtrar('Recursos con IA', '📱 Prompt Base: Generador de Rúbricas Automatizadas\n📱 Asistente IA: Creador de Cuestionarios en ChatGPT')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📱</div>
+                <h4 class="font-bold text-xs text-gray-700">Recursos IA</h4>
+            </button>
 
-            <!-- 11. Laboratorios Virtuales -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    🧪
-                </div>
-                <h4 class="font-bold text-xs text-gray-700">Laboratorios Virtuales</h4>
-            </div>
+            <button onclick="filtrar('Laboratorios Virtuales', '🧪 Simulador PhET: Reacciones Químicas\n🧪 Laboratorio Virtual: Circuitos Eléctricos')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">🧪</div>
+                <h4 class="font-bold text-xs text-gray-700">Laboratorios</h4>
+            </button>
 
-            <!-- 12. Infografías -->
-            <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 text-center group cursor-pointer hover:border-emerald-500">
-                <div class="w-12 h-12 bg-yellow-100 text-yellow-700 rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition text-xl">
-                    🖼️
-                </div>
+            <button onclick="filtrar('Infografías', '🖼️ Infografía: Línea del Tiempo del Bicentenario\n🖼️ Esquema Visual: El Ciclo del Agua')" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition border border-gray-200 hover:border-emerald-500 text-center group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">🖼️</div>
                 <h4 class="font-bold text-xs text-gray-700">Infografías</h4>
+            </button>
+        </div>
+    </section>
+
+    <!-- Visor Dinámico de Recursos Filtrados -->
+    <section id="recursos" class="container mx-auto px-6 py-6">
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-emerald-300">
+            <h4 id="titulo-categoria" class="text-xl font-bold text-emerald-800 border-b pb-2">📌 Selecciona un ícono arriba para ver sus contenidos</h4>
+            <div id="contenido-categoria" class="mt-4 text-sm text-gray-600 whitespace-pre-line leading-relaxed">
+                Haz clic sobre cualquiera de las 12 categorías en la parte superior para desplegar los materiales pedagógicos adjuntos en esta sección.
             </div>
         </div>
     </section>
 
-    <!-- Sección de Recursos Destacados -->
-    <section class="container mx-auto px-6 py-6">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6">Recursos Abiertos Destacados</h3>
+    <!-- Script en JavaScript para activar los clics -->
+    <script>
+        function filtrar(categoria, archivos) {
+            document.getElementById('titulo-categoria').innerText = '📂 Archivos de la categoría: ' + categoria;
+            document.getElementById('contenido-categoria').innerText = archivos;
+            
+            // Desplazar suavemente hasta el resultado
+            document.getElementById('recursos').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Tarjeta 1 -->
-            <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
-                <div>
-                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-md">Matemáticas</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-3">Planeación Fracciones Heterogéneas</h4>
-                    <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-school mr-1"></i> I.E. San José de Suaita</p>
-                    <p class="text-amber-500 text-xs font-bold mt-2">⭐⭐⭐⭐⭐ (4.9 / 5)</p>
-                </div>
-                <button class="mt-5 w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i> Descargar Recurso
-                </button>
-            </div>
-
-            <!-- Tarjeta 2 -->
-            <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
-                <div>
-                    <span class="bg-pink-100 text-pink-800 text-xs font-bold px-2.5 py-1 rounded-md">Inclusión / DUA</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-3">Guía Adaptada Educación Inclusiva</h4>
-                    <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-school mr-1"></i> Centro Inclusivo Bucaramanga</p>
-                    <p class="text-amber-500 text-xs font-bold mt-2">⭐⭐⭐⭐⭐ (5.0 / 5)</p>
-                </div>
-                <button class="mt-5 w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i> Descargar Recurso
-                </button>
-            </div>
-
-            <!-- Tarjeta 3 -->
-            <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
-                <div>
-                    <span class="bg-cyan-100 text-cyan-800 text-xs font-bold px-2.5 py-1 rounded-md">IA Educativa</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-3">Prompts para Creación de Quizzes</h4>
-                    <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-school mr-1"></i> Col. de Santander</p>
-                    <p class="text-amber-500 text-xs font-bold mt-2">⭐⭐⭐⭐☆ (4.8 / 5)</p>
-                </div>
-                <button class="mt-5 w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i> Descargar Recurso
-                </button>
-            </div>
-
-            <!-- Tarjeta 4 -->
-            <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
-                <div>
-                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded-md">Juegos</span>
-                    <h4 class="font-bold text-lg text-gray-800 mt-3">Trivia de Historia de Colombia</h4>
-                    <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-school mr-1"></i> Esc. Rural La Esperanza</p>
-                    <p class="text-amber-500 text-xs font-bold mt-2">⭐⭐⭐⭐⭐ (5.0 / 5)</p>
-                </div>
-                <button class="mt-5 w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i> Descargar Recurso
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pie de Página Formal -->
-    <footer class="bg-gray-900 text-gray-400 py-8 mt-12 text-center text-xs border-t border-gray-800">
-        <p class="font-semibold text-gray-300">EduRed Santander - Proyecto de Especialización en TIC para la Educación</p>
-        <p class="mt-1">Universidad de Cartagena | Repositorio Abierto para Docentes y Estudiantes</p>
+    <footer class="bg-gray-900 text-gray-400 py-8 mt-12 text-center text-xs">
+        <p class="font-semibold text-gray-300">EduRed Santander - Repositorio Educativo Colaborativo</p>
+        <p class="mt-1">Universidad de Cartagena</p>
     </footer>
 
 </body>
